@@ -136,7 +136,7 @@
               </form>
             </div>
             <div class="mdl-card__actions mdl-card--border" onclick="javascript:void(0)">
-              <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+              <a class="submit-btn mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
                 Submit
               </a>
             </div>
@@ -281,6 +281,7 @@
     <a href="https://github.com/sahanarula/devfest-feedback" target="_blank" id="view-source" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--accent mdl-color-text--accent-contrast">View Source</a>
     <script src="./material.min.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
     <script type="text/javascript">
       $('#add').click(function(){
         $('.card-container').css('display', 'inline');
@@ -292,6 +293,9 @@
         if(e.target.className == "card-container")
           $('.card-container').css('display', 'none');
       })
+      $('.submit-btn').click(function(){
+
+      });
     </script>
   </body>
 </html>
