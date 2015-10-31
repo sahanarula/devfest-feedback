@@ -297,7 +297,11 @@
     <script type="text/javascript">
       var myDataRef = new Firebase('https://gdg-trial.firebaseio.com/');
       $('.submit-btn').click(function(){
-        myDataRef.push({name: name, text: text});
+        //data to be implemented
+        myDataRef.push();
+      });
+      myDataRef.on('child_added', function(snapshot) {
+        var message = snapshot.val();
       });
     </script>
   </body>
