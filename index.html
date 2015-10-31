@@ -64,6 +64,29 @@
       border-radius: 50%;
       margin-left: 60px;
     }
+    .demo-card-wide.mdl-card.mdl-shadow--2dp {
+    position: absolute;
+    margin: 0px auto;
+    text-align: center;
+    left: 50%;
+    width: 400px;
+    margin-left: -200px;
+    margin-top: 61px;
+    z-index: 22;
+    color: #282828;
+  }
+  .card-container {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: rgba(0,0,0,0.5);
+    top: 0;
+    z-index: 21;
+    display: none;
+  }
+  .mdl-textfield {
+    float: left;
+  }
     </style>
   </head>
   <body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
@@ -86,6 +109,38 @@
             <i class="material-icons" role="presentation">add</i>
             <span class="visuallyhidden">Add</span>
           </button>
+        </div>
+        <div class="card-container">
+          <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+            <div class="mdl-card__title">
+              <h2 class="mdl-card__title-text">Welcome</h2>
+            </div>
+            <div class="mdl-card__supporting-text mdl-grid mdl-grid--no-spacing " onclick="javascript:void(0)">
+              <!-- Numeric Textfield -->
+              <form action="#">
+                <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--6-col ">
+                  <input class="mdl-textfield__input" type="text"id="sample2" />
+                  <label class="mdl-textfield__label" for="sample2">Name</label>
+                </div>
+
+                <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--6-col ">
+                  <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sample2" />
+                  <label class="mdl-textfield__label" for="sample2">Rate</label>
+                  <span class="mdl-textfield__error">Input is not a number!</span>
+                </div>
+
+                <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
+                  <textarea class="mdl-textfield__input" type="text" rows= "3" id="sample5" ></textarea>
+                  <label class="mdl-textfield__label" for="sample5">Text lines...</label>
+                </div>
+              </form>
+            </div>
+            <div class="mdl-card__actions mdl-card--border" onclick="javascript:void(0)">
+              <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                Submit
+              </a>
+            </div>
+          </div>
         </div>
       </header>
       <main class="mdl-layout__content">
@@ -225,5 +280,18 @@
     </div>
     <a href="https://github.com/sahanarula/devfest-feedback" target="_blank" id="view-source" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--accent mdl-color-text--accent-contrast">View Source</a>
     <script src="./material.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript">
+      $('#add').click(function(){
+        $('.card-container').css('display', 'inline');
+        var title = $('.mdl-layout__tab-panel.is-active').attr('id');
+        $('.mdl-card__title-text').html(title);
+      })
+      $('.card-container').click(function(e){
+        console.log(e.target);
+        if(e.target.className == "card-container")
+          $('.card-container').css('display', 'none');
+      })
+    </script>
   </body>
 </html>
