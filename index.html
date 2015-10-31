@@ -295,6 +295,19 @@
       })
     </script>
     <script type="text/javascript">
+      var displayCard = function(name, rate, feedback){
+        var data = "";
+        data +=  '<section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">'
+        data +=    '<div class="mdl-card mdl-cell mdl-cell--12-col">'
+        data +=       '<div class="mdl-card__supporting-text">'
+        data +=         '<h4>' + name + '</h4>'
+        data +=         '<h6>'+rate+ '/5</h6>'
+        data +=         feedback
+        data +=       '</div>'
+        data +=    '</div>'
+        data +=  '</section>';
+        return data;
+      }
       var myDataRef = new Firebase('https://gdg-trial.firebaseio.com/');
       $('.submit-btn').click(function(){
         var name = $('#name').val();
@@ -306,8 +319,8 @@
       });
       myDataRef.on('child_added', function(snapshot) {
         var message = snapshot.val();
-        console.log(snapshot);
         console.log(message);
+        $('#'+message.title).prepend(displayCard(message.name, message.rate, message.feedback));
       });
     </script>
   </body>
