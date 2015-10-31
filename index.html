@@ -119,18 +119,18 @@
               <!-- Numeric Textfield -->
               <form action="#">
                 <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--6-col ">
-                  <input class="mdl-textfield__input" type="text"id="sample2" />
+                  <input class="mdl-textfield__input" type="text" id="name" />
                   <label class="mdl-textfield__label" for="sample2">Name</label>
                 </div>
 
                 <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--6-col ">
-                  <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sample2" />
+                  <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="rate" />
                   <label class="mdl-textfield__label" for="sample2">Rate</label>
                   <span class="mdl-textfield__error">Input is not a number!</span>
                 </div>
 
                 <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
-                  <textarea class="mdl-textfield__input" type="text" rows= "3" id="sample5" ></textarea>
+                  <textarea class="mdl-textfield__input" type="text" rows= "3" id="feedback" ></textarea>
                   <label class="mdl-textfield__label" for="sample5">Text lines...</label>
                 </div>
               </form>
@@ -297,11 +297,17 @@
     <script type="text/javascript">
       var myDataRef = new Firebase('https://gdg-trial.firebaseio.com/');
       $('.submit-btn').click(function(){
-        //data to be implemented
-        myDataRef.push();
+        var name = $('#name').val();
+        var rate = $('#rate').val();
+        var feedback = $('#feedback').val();
+        var title = $('.mdl-layout__tab-panel.is-active').attr('id');
+        myDataRef.push({name:name, rate:rate, feedback:feedback, title:title});
+        $('.card-container').css('display', 'none');
       });
       myDataRef.on('child_added', function(snapshot) {
         var message = snapshot.val();
+        console.log(snapshot);
+        console.log(message);
       });
     </script>
   </body>
