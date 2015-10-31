@@ -293,12 +293,12 @@
         if(e.target.className == "card-container")
           $('.card-container').css('display', 'none');
       })
-      $('.submit-btn').click(function(){
-
-      });
     </script>
     <script type="text/javascript">
       var myDataRef = new Firebase('https://gdg-trial.firebaseio.com/');
+      $('.submit-btn').click(function(){
+        myDataRef.push({name: name, text: text});
+      });
     </script>
   </body>
 </html>
